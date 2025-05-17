@@ -1,0 +1,127 @@
+TESTING
+
+Models in testing
+1) waterfall model - 1 analysis 2 design 3 implement 4 testing 5 deploy 6 maintanence
+
+2) V model - the sequence is carried out in a v shape structure 
+
+->Alpha testing - is process of testing which is done by our "own team mates within organization"
+
+->Beta testing - is proecss of testing we deploy the product to the live and it'll be in testing application to the customer after all the correct feedbacks from the customer 
+		, the beta testing application will be deployed as original application
+
+->Software testing life cycle -> test design , test bit configuration , test cases
+
+->SDLC software developement life cycle -> requirements,analyis , design , code , test , deploy , maintanance
+
+->Types of testing 
+	- load testing (checks wether the pages loading are done properly)
+	- secuirty testing (its the process of checking wether the data and the information are kept safe)
+	- re testing - if one testing is done and the error is thrwon , then we need to do the re-testing and make sure that bug needs to be fixed.
+	- regression testing , then if we do the re-testing .. make sure the re-testing is done properly and continue the testing
+	-smoke testing - its the testing process of checking wether the application is fit for testing , if not we wont start anyother testing models
+	-sanity testing - its the the testing process of checking wether that particular module of the product is correctly working and fit for testing that particular module., if not we wont start anyother testing models
+         smoke Vs sanity - smoke checks wether the entire application is fit for testing , sanity chceks wether any one particular module of that application is fit for testing
+
+ 3 Components of selenium
+-selenium web driver
+-selenium IDE
+-Selenium GRID
+-selenium RC
+
+-selenium web driver
+creating a robusts(efficient) , browser based website we use  web drivers testing , web drivers support mutlitple langu - C ,Py , Java , js
+
+-selenium IDE
+its an old baseed approach , we use IDE for finding Bugs coz all IDE's provice compilation during coding itself, so thats why we use IDE concept
+
+-selenium Grid
+ is used for parallel and distrubuted systems
+
+steps to start with selenium
+
+open intelji -> file->new->project->build system(maven)
+1.add jar for selenium or add it in dependcy file
+
+2.in pom.xml file -> create dependencies tag and then add dependecnies into that files.
+
+3.add depenedency Selenium API from maven repo download
+
+4 add chrome driver.exe file .. always check the downloaded chrome driver.exe file and ur current chrome browser version is same number .. that is very imp step.
+
+Automation testing Xpath concept is the path where we locate the DOM element.
+why we need xpath , coz when we write automation testing we will say to the testing tool to pick the value peresent in this xPath dom element
+we can also give by Id which will also be unique , this is also another method to get the value 
+but xPath concept is widely used in automation testing
+
+xPath / is basic xpath , // is relative xPath
+<html><body><form><button id='button_id'></button></form></body></html>
+
+basic/absolute xPath to get the button value is .... -> html/body/form/button/button_id
+realtive xPath to get the button value is ... -> //*button[@id = 'button_id'] by this we can replace the above line
+
+//*[@class = 'scaffold-finite-scroll__content']/ul
+//*[@class = 'scaffold-finite-scroll__content']/ul/li
+//*[@class = 'scaffold-finite-scroll__content']/ul/li//*[@class='relative']
+(//*[@class = 'scaffold-finite-scroll__content']/ul/li//*[@class='update-v2-social-activity'])
+
+//*[@class = 'scaffold-finite-scroll__content']/ul/li//*[@class='fie-impression-container']
+//*[@class = 'scaffold-finite-scroll__content']/ul/li//*[@class='feed-shared-update-v2__control-menu-container display-flex flex-column flex-grow-1']--finally choosen so far
+//*[@class = 'scaffold-finite-scroll__content']/ul/li//*[@class='feed-shared-update-v2__control-menu-container display-flex flex-column flex-grow-1']//div[3]
+
+
+//*[@class = 'scaffold-finite-scroll__content']/ul/li//*[@class='feed-shared-update-v2__control-menu-container display-flex flex-column flex-grow-1']//ul//li[2]//button
+
+
+LOCATORS we use to find an dom element
+id , classname , name , link text , xpath , css , partial link text , tagname are the locators "tcipxcn"
+
+to add a testing project 
+-> depedncies 
+in pom.xml file
+we need all these api selenium , testng , common-io , junit(optional , coz we do not use Jupiter @Test , we use testng @Test)
+   <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
+        
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+     
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+     
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+       
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+
+-> project file structure must be 
+	test(package) we write all the testing pages class
+	pageobjects(package) we write all the methods (what to perform in that page)
+	customDriver we write the xpaths code here 
+	BaseTest class we write the the driver load and driver quit with @BeforeMethod for driver open and @AfterMethod for driver quit 
+
+->we used Xpath to locate an elemet and we did click , sendkeys 
+-> we used Actions like hove n click 
+->we saw general topics of alert boxes , drop down concepts
+-> we used iframe handling (iframe handling xpaths is written different from normal xpaths).
+-> we used windowHandle to handle other drivers in case of switching windows
+-> we used screenShot (which is an interface) we used that to that the scs of the chrome driver    
+-> we used page factory instead of customdriver -> put page factor @findBy annotation , in basetest we need to put initelements for creating constructor
+->we used assert 
+->we used javascript executor
+->we used extent reports
+	we add status , method name , screenshot to the output of the report.html file
+-> testng reports -> we will implement thro testng.xml level and we need add plugins of testng xml and then we will see the output in test-output folder in that all outputs wil be in .html files
+-> we used ITestListeners 
+-> we passed data from excel to selenium java in dataproviders with @dataProviders annotation
+-> we did browserStack method
+->Waits - implicit wait , explicit wait , fluent wait , static wait(thread)
+
+
+Testng we used for testing
+    //methods inside @Test(we can give all these 6 steps)
+    //1.groups will run first and then dependsongroups will get executed
+    //2.dependOnMethods if we give in any test and give the another test name in that dependsOnMethods after that test is executed successfully this test will get executed
+    //3.priority
+    //4.enabled = false will skip that test or it will not execute that test
+    //5.dependOnMethods , always = true is factor which will happen when dependOnMethods conditions failed also this parent test case will reun , if we dont five always true , it will throw error saying if one failure is arrived all other test cases won't execute
+    //6.invocation count is the process in which the test cases will run repeatedly in a loop format		
+    //7.dataProviders 
+
+finally we did Cucumber 
